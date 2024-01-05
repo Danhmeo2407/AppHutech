@@ -1,0 +1,69 @@
+<resources>
+    <string name="app_name">Hutech</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="ng_nh_p">Đăng Nhập</string>
+    <string name="mssv">MSSV</string>
+    <string name="m_t_kh_u">Mật Khẩu</string>
+    <string name="qu_n_m_t_kh_u">Quên mật khẩu</string>
+    <string name="c_t_i_kho_n">Đã có tài khoản</string>
+    <string name="ng_k">Đăng ký</string>
+    <string name="todo">TODO</string>
+    <string name="title_activity_nav_item">navItem</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="back">back</string>
+    <string name="nh_p_l_i_m_t_kh_u_c">Nhập lại mật khẩu cũ</string>
+    <string name="nh_p_m_t_kh_u_m_i">Nhập mật khẩu mới</string>
+    <string name="i_m_t_kh_u">Đổi mật khẩu</string>
+    <string name="nh_p_m_t_kh_u_c">Nhập mật khẩu cũ</string>
+    <string name="x_c_nh_n_m_t_kh_u_m_i">Xác Nhận mật khẩu mới</string>
+    <string name="x_c_nh_n_m_t_kh_u">Xác nhận mật khẩu</string>
+    <string name="x_c_nh_n">Xác Nhận</string>
+    <string name="email">Email</string>
+    <string name="c_m_t_kh_u">Đã có mật khẩu</string>
+    <string name="reset_m_t_kh_u">Đổi mật khẩu</string>
+    <string name="b_n_h_y_nh_p_email_i_l_i_m_t_kh_u">Bạn hãy nhập Email để đổi lại mật khẩu</string>
+
+    <string name="user_name">User Name</string>
+    <string name="email_id">Email Id</string>
+    <string name="password">Password (At least 6 characters)</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="sign_in">Sign In</string>
+    <string name="don_t_have_an_account">Don\'t have an account ?</string>
+    <string name="rest_password">Rest Password</string>
+    <string name="forget_password">Forget Password?</string>
+    <string name="don_t_worry_we_just_need_your_registered_email_address_and_it_s_done">Don\'t worry we just need your registered email address and it\'s done</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="lt_go_back"><![CDATA[< Go Back]]></string>
+    <string name="sign_up">Sign Up</string>
+    <string name="quay_l_i">Quay lại</string>
+    <string name="t_n_ng_nh_p">Tên đăng nhập</string>
+    <string name="b_n_ch_a_c_t_i_kho_n">Bạn chưa có tài khoản?</string>
+    <string name="check_in_event">Check In Event</string>
+    <string name="account">Account</string>
+    <string name="qrcode">QrCode</string>
+    <string name="check">Check</string>
+    <string name="list">List</string>
+    <string name="g_i">Gửi</string>
+    <string name="n_i_dung">Nội dung</string>
+    <string name="news">News</string>
+    <string name="m_s_sinh_vi_n">Mã số sinh viên</string>
+    <string name="s_i_n_tho_i">Số điện thoại</string>
+    <string name="nh_p_h_t_n">Nhập họ tên</string>
+    <string name="h_t_n">Họ tên</string>
+    <string name="xem">Xem</string>
+
+</resources>

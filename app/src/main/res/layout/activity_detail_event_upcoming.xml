@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- activity_detail_event_upcoming.xml -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:contentDescription="@string/back"
+        android:background="@drawable/custom_btn"
+        android:drawableLeft="@drawable/ic_back"
+        app:backgroundTint="@null"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/btnBack"
+        android:paddingLeft="16dp"
+        android:paddingTop="16dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="16dp">
+
+        <TextView
+            android:id="@+id/detailNameTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"/>
+
+        <ImageView
+            android:id="@+id/detailImageView"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:layout_below="@id/detailNameTextView"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:id="@+id/detailFacultyTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/detailImageView"
+            android:layout_marginTop="16dp"/>
+
+        <TextView
+            android:id="@+id/detailLocationTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/detailFacultyTextView"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:id="@+id/detailTimeTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/detailLocationTextView"
+            android:layout_marginTop="8dp"/>
+
+        <Button
+            android:id="@+id/btnDangKy"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="40dp"
+            android:layout_below="@id/detailTimeTextView"
+            android:layout_marginTop="20dp"
+            android:text="Đăng Ký"
+            android:background="@drawable/custom_btn"
+            android:backgroundTint="@color/green"
+            app:backgroundTint="@null"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

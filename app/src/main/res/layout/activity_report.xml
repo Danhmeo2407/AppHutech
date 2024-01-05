@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activites.ListUpcomingActivity">
+
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:contentDescription="@string/back"
+        android:background="@drawable/custom_btn"
+        android:drawableLeft="@drawable/ic_back"
+        app:backgroundTint="@null"/>
+
+    <TextView
+        android:id="@+id/txtEventUpComing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnBack"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="130dp"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:text="Gửi khiếu nại" />
+
+    <RelativeLayout
+        android:id="@+id/layoutReport"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/txtEventUpComing">
+
+
+        <TextView
+            android:id="@+id/txtMSSV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginHorizontal="35dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="MSSV" />
+
+        <EditText
+            android:id="@+id/edtMSSV"
+            android:layout_width="500dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtMSSV"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="20dp"
+            android:ems="10"
+            android:hint="@string/mssv"
+            android:inputType="text"
+            android:minHeight="48dp" />
+
+        <TextView
+            android:id="@+id/txtHoTen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginHorizontal="35dp"
+            android:layout_below="@+id/edtMSSV"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="@string/h_t_n" />
+
+        <EditText
+            android:id="@+id/edtHoTen"
+            android:layout_width="500dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtHoTen"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="20dp"
+            android:ems="10"
+            android:hint="@string/nh_p_h_t_n"
+            android:inputType="text"
+            android:minHeight="48dp" />
+
+        <TextView
+            android:id="@+id/txtReportContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginHorizontal="35dp"
+            android:layout_below="@+id/edtHoTen"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="Lí do" />
+
+        <EditText
+            android:id="@+id/edtReportContent"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtReportContent"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="20dp"
+            android:ems="10"
+            android:hint="Nội dung"
+            android:inputType="text"
+            android:minHeight="48dp" />
+
+        <Button
+            android:id="@+id/btnSend"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/edtReportContent"
+            android:layout_marginTop="50dp"
+            android:layout_marginHorizontal="60dp"
+            android:text="@string/g_i"
+            android:background="@drawable/custom_btn"
+            android:backgroundTint="@color/green"
+            app:backgroundTint="@null"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

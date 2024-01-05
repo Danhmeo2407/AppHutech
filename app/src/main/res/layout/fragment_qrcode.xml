@@ -1,0 +1,56 @@
+<!-- res/layout/fragment_qrcode.xml -->
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/qrCodeImageView"
+        android:layout_width="308dp"
+        android:layout_height="307dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginStart="50dp" />
+
+    <TextView
+        android:id="@+id/txtMaQr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/qrCodeImageView"
+        android:layout_marginStart="140dp"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:text="Mã QR của tôi" />
+
+    <Button
+        android:id="@+id/btnQuetQR"
+        android:layout_width="208dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtMaQr"
+        android:layout_marginStart="110dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/custom_btn"
+        android:contentDescription="Quét QR"
+        android:drawableLeft="@drawable/ic_scan"
+        android:text="Quét mã QR"
+        android:textStyle="bold"
+        android:textSize="17sp"
+        android:textColor="@color/black"
+        app:backgroundTint="@null"
+        tools:ignore="RtlSymmetry" />
+
+    <Button
+        android:id="@+id/btnGenerateQRCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnQuetQR"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="Generate QR Code"
+        android:textStyle="bold"
+        android:background="@drawable/custom_btn"
+        android:backgroundTint="@color/sea_blue"
+        app:backgroundTint="@null"/>
+
+</RelativeLayout>
