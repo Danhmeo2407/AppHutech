@@ -1,45 +1,32 @@
 package com.example.hutech.model;
 
+import com.google.firebase.Timestamp;
 import com.google.gson.annotations.SerializedName;
 
-public class RegisteredEvent {
+public class RegisteredEvent extends Events{
     @SerializedName("id")
     private String id;
-    @SerializedName("name")
-    private String name;
-    @SerializedName("post")
-    private String post;
-    @SerializedName("content")
-    private String content;
-    @SerializedName("location")
-    private String location;
-    @SerializedName("startDay")
-    private String startDay;
-    @SerializedName("image")
-    private String image;
-    @SerializedName("faculty")
-    private String faculty;
-    @SerializedName("qr")
-    private String qr;
-    @SerializedName("userUid")
-    private String userUid;
-
+    @SerializedName("userId")
+    private String userId;
+    @SerializedName("eventId")
+    private String eventId;
+    @SerializedName("timestamp")
+    private Timestamp timestamp;
+    @SerializedName("status")
+    private int status;
     public RegisteredEvent(){
 
     }
 
-    public RegisteredEvent(String id, String name, String post, String content, String location, String startDay, String image, String faculty, String qr, String userUid) {
+    public RegisteredEvent(String id, String userId, String eventId, Timestamp timestamp, int status) {
         this.id = id;
-        this.name = name;
-        this.post = post;
-        this.content = content;
-        this.location = location;
-        this.startDay = startDay;
-        this.image = image;
-        this.faculty = faculty;
-        this.qr = qr;
-        this.userUid = userUid;
+        this.userId = userId;
+        this.eventId = eventId;
+        this.timestamp = timestamp;
+        this.status = status;
     }
+
+
 
     public String getId() {
         return id;
@@ -49,75 +36,35 @@ public class RegisteredEvent {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
-    public String getPost() {
-        return post;
+    public String getEventId() {
+        return eventId;
     }
 
-    public void setPost(String post) {
-        this.post = post;
+    public void setEventId(String eventId) {
+        this.eventId = eventId;
     }
 
-    public String getContent() {
-        return content;
+    public Timestamp getTimestamp() {
+        return timestamp;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setTimestamp(Timestamp timestamp) {
+        this.timestamp = timestamp;
     }
 
-    public String getLocation() {
-        return location;
+    public int getStatus() {
+        return status;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public String getStartDay() {
-        return startDay;
-    }
-
-    public void setStartDay(String startDay) {
-        this.startDay = startDay;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    public String getFaculty() {
-        return faculty;
-    }
-
-    public void setFaculty(String faculty) {
-        this.faculty = faculty;
-    }
-
-    public String getQr() {
-        return qr;
-    }
-
-    public void setQr(String qr) {
-        this.qr = qr;
-    }
-
-    public String getUserUid() {
-        return userUid;
-    }
-
-    public void setUserUid(String userUid) {
-        this.userUid = userUid;
+    public void setStatus(int status) {
+        this.status = status;
     }
 }

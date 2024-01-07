@@ -15,19 +15,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.hutech.Activites.DetailNewsActivity;
 import com.example.hutech.R;
-import com.example.hutech.model.Newpaper;
+import com.example.hutech.model.News;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.List;
 
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewViewHolder> {
     private Context context;
-    private List<Newpaper> newpapers;
+    private List<News> news;
     private FirebaseFirestore firestore;
 
-    public NewsAdapter(Context context, List<Newpaper> newpaperList) {
+    public NewsAdapter(Context context, List<News> newsList) {
         this.context = context;
-        this.newpapers = newpaperList;
+        this.news = newsList;
         firestore = FirebaseFirestore.getInstance();
     }
 
@@ -40,33 +40,37 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewViewHolder>
 
     @Override
     public void onBindViewHolder(@NonNull NewsAdapter.NewViewHolder holder, int position) {
-        Newpaper newpaper = newpapers.get(position);
+        News news1 = news.get(position);
 
-        holder.newtitleTextView.setText(newpaper.getTitle());
-//        holder.newsDescriptionTextView.setText(newpaper.getDescription());
-        holder.newtimeTextView.setText(newpaper.getTime());
+        holder.newtitleTextView.setText(news1.getTitle());
+        holder.newsDescriptionTextView.setText(news1.getDescription());
+
+        // Format the Timestamp to a String before setting it in the TextView
+        String formattedTime = news1.getFormattedTime(); // Assuming you have a method to format Timestamp in the News class
+        holder.newtimeTextView.setText(formattedTime);
 
         // Use Glide to load the image from the URL
-        Glide.with(context).load(newpaper.getImage()).into(holder.newimageView);
+        Glide.with(context).load(news1.getImage()).into(holder.newimageView);
 
         holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Open the DetailNewsActivity with the details of the selected news article
                 Intent intent = new Intent(context, DetailNewsActivity.class);
-                intent.putExtra("id", newpaper.getId());
-                intent.putExtra("description", newpaper.getDescription());
-                intent.putExtra("title", newpaper.getTitle());
-                intent.putExtra("image", newpaper.getImage());
-                intent.putExtra("time", newpaper.getTime());
+                intent.putExtra("id", news1.getId());
+                intent.putExtra("description", news1.getDescription());
+                intent.putExtra("title", news1.getTitle());
+                intent.putExtra("image", news1.getImage());
+                intent.putExtra("time", formattedTime); // Pass the formatted time
                 context.startActivity(intent);
             }
         });
     }
 
+
     @Override
     public int getItemCount() {
-        return newpapers.size();
+        return news.size();
     }
 
     public class NewViewHolder extends RecyclerView.ViewHolder {

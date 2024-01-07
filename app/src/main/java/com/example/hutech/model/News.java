@@ -1,25 +1,31 @@
 package com.example.hutech.model;
 
+import com.google.firebase.Timestamp;
 import com.google.gson.annotations.SerializedName;
 
-public class Newpaper {
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
+public class News {
     @SerializedName("id")
-    private int id;
+    private String id;
     @SerializedName("title")
     private String title;
     @SerializedName("description")
     private String description;
     @SerializedName("time")
-    private String time;
+    private Timestamp time;
     @SerializedName("image")
     private String image;
 
-    public Newpaper() {
+    public News() {
         // Default constructor is required by Firestore
     }
 
 
-    public Newpaper(int id, String title, String description, String time, String image) {
+    public News(String id, String title, String description, Timestamp time, String image) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -27,11 +33,11 @@ public class Newpaper {
         this.image = image;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -51,11 +57,11 @@ public class Newpaper {
         this.description = description;
     }
 
-    public String getTime() {
+    public Timestamp getTime() {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime(Timestamp time) {
         this.time = time;
     }
 
@@ -65,5 +71,13 @@ public class Newpaper {
 
     public void setImage(String image) {
         this.image = image;
+    }
+    public String getFormattedTime() {
+        if (time != null) {
+            Date date = time.toDate();
+            SimpleDateFormat outputFormat = new SimpleDateFormat("dd-MM-yyyy h:mm a", Locale.US);
+            return outputFormat.format(date);
+        }
+        return null;
     }
 }

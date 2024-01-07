@@ -1,78 +1,3 @@
-//package com.example.hutech.ui.list;
-//
-//import android.os.Bundle;
-//import android.view.LayoutInflater;
-//import android.view.View;
-//import android.view.ViewGroup;
-//
-//import androidx.annotation.NonNull;
-//import androidx.fragment.app.Fragment;
-//import androidx.recyclerview.widget.LinearLayoutManager;
-//import androidx.recyclerview.widget.RecyclerView;
-//
-//import com.example.hutech.Adapter.AttendedEventAdapter;
-//import com.example.hutech.R;
-//import com.example.hutech.databinding.FragmentListBinding;
-//import com.example.hutech.model.AttendedEvent;
-//import com.google.firebase.firestore.CollectionReference;
-//import com.google.firebase.firestore.DocumentSnapshot;
-//import com.google.firebase.firestore.FirebaseFirestore;
-//
-//
-//import java.util.ArrayList;
-//import java.util.List;
-//
-//public class ListFragment extends Fragment {
-//
-//    private FragmentListBinding binding;
-//    private RecyclerView recyclerView;
-//    private AttendedEventAdapter attendedEventAdapter;
-//    private List<AttendedEvent> attendedEventList;
-//    private FirebaseFirestore firestore;
-//    private CollectionReference attendedEventCollection;
-//
-//    public View onCreateView(@NonNull LayoutInflater inflater,
-//                             ViewGroup container, Bundle savedInstanceState) {
-//        binding = FragmentListBinding.inflate(inflater, container, false);
-//        View root = binding.getRoot();
-//
-//        recyclerView = root.findViewById(R.id.recyclerViewEventJoined);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-//        attendedEventList = new ArrayList<>();
-//        attendedEventAdapter = new AttendedEventAdapter(getContext(), attendedEventList);
-//
-//        recyclerView.setAdapter(attendedEventAdapter);
-//
-//        firestore = FirebaseFirestore.getInstance();
-//        attendedEventCollection = firestore.collection("eventjoined");
-//
-//        fetchAttendedEventFromFirestore();
-//
-//        return root;
-//    }
-//
-//    private void fetchAttendedEventFromFirestore() {
-//        attendedEventCollection.get().addOnCompleteListener(task -> {
-//            if (task.isSuccessful()) {
-//                attendedEventList.clear(); // Clear existing data before adding new data
-//
-//                for (DocumentSnapshot document : task.getResult()) {
-//                    AttendedEvent attendedEvent = document.toObject(AttendedEvent.class);
-//                    attendedEventList.add(attendedEvent);
-//                }
-//
-//                attendedEventAdapter.notifyDataSetChanged();
-//            } else {
-//                // Handle error
-//                Exception exception = task.getException();
-//                if (exception != null) {
-//                    exception.printStackTrace(); // Log the exception for debugging
-//                }
-//            }
-//        });
-//    }
-//}
-
 package com.example.hutech.ui.list;
 
 import android.os.Bundle;
@@ -86,9 +11,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.hutech.Adapter.AttendedEventAdapter;
+import com.example.hutech.Adapter.RegisteredEventAdapter;
 import com.example.hutech.R;
 import com.example.hutech.databinding.FragmentListBinding;
 import com.example.hutech.model.AttendedEvent;
+import com.example.hutech.model.Events;
+import com.example.hutech.model.RegisteredEvent;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
@@ -102,10 +30,12 @@ public class ListFragment extends Fragment {
 
     private FragmentListBinding binding;
     private RecyclerView recyclerView;
-    private AttendedEventAdapter attendedEventAdapter;
-    private List<AttendedEvent> attendedEventList;
+    private RegisteredEventAdapter registeredEventAdapter;
+    private List<Events> events;
+
+    // Firestore instance
     private FirebaseFirestore firestore;
-    private CollectionReference attendedEventCollection;
+    private CollectionReference registeredEventCollection;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -114,36 +44,37 @@ public class ListFragment extends Fragment {
 
         recyclerView = root.findViewById(R.id.recyclerViewEventJoined);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        attendedEventList = new ArrayList<>();
-        attendedEventAdapter = new AttendedEventAdapter(getContext(), attendedEventList);
+        events = new ArrayList<>();
+        registeredEventAdapter = new RegisteredEventAdapter(getContext(), events);
 
-        recyclerView.setAdapter(attendedEventAdapter);
+        recyclerView.setAdapter(registeredEventAdapter);
 
         firestore = FirebaseFirestore.getInstance();
-        attendedEventCollection = firestore.collection("eventjoined");
+        registeredEventCollection = firestore.collection("registeredEvent");
 
-        fetchAttendedEventFromFirestore();
+        fetchRegisteredEventsFromFirestore();
 
         return root;
     }
 
-    private void fetchAttendedEventFromFirestore() {
-        // Get the current user's UID
-        String currentUserUid = getCurrentUserUid();
-
-        if (currentUserUid != null) {
-            attendedEventCollection.whereEqualTo("userUid", currentUserUid)
+    private void fetchRegisteredEventsFromFirestore() {
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        if (currentUser != null) {
+            firestore.collection("registeredEvent")
+                    .whereEqualTo("userId", currentUser.getUid())
+                    .whereEqualTo("status", 2)  // Adjust status as needed
                     .get()
                     .addOnCompleteListener(task -> {
-                        if (task.isSuccessful()) {
-                            attendedEventList.clear(); // Clear existing data before adding new data
-
+                        if (task.isSuccessful() && task.getResult() != null) {
+                            List<String> eventIds = new ArrayList<>();
                             for (DocumentSnapshot document : task.getResult()) {
-                                AttendedEvent attendedEvent = document.toObject(AttendedEvent.class);
-                                attendedEventList.add(attendedEvent);
+                                RegisteredEvent registration = document.toObject(RegisteredEvent.class);
+                                if (registration != null && registration.getStatus() == 2) {
+                                    eventIds.add(registration.getEventId());
+                                }
                             }
-
-                            attendedEventAdapter.notifyDataSetChanged();
+                            // Now fetch the details of the events
+                            fetchEventDetails(eventIds);
                         } else {
                             // Handle error
                             Exception exception = task.getException();
@@ -155,12 +86,31 @@ public class ListFragment extends Fragment {
         }
     }
 
-    // Helper method to get the current user's UID
-    private String getCurrentUserUid() {
-        // Assuming you have Firebase Authentication set up
-        // Retrieve the current user UID from FirebaseAuth
-        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-        return (currentUser != null) ? currentUser.getUid() : null;
+    private void fetchEventDetails(List<String> eventIds) {
+        events.clear(); // Clear existing data before adding new data
+
+        for (String eventId : eventIds) {
+            firestore.collection("events")
+                    .document(eventId)
+                    .get()
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            DocumentSnapshot document = task.getResult();
+                            if (document.exists()) {
+                                Events event = document.toObject(Events.class);
+                                events.add(event);
+                                registeredEventAdapter.notifyDataSetChanged();
+                            } else {
+                                // Handle the case where the event document doesn't exist
+                            }
+                        } else {
+                            // Handle error
+                            Exception exception = task.getException();
+                            if (exception != null) {
+                                exception.printStackTrace(); // Log the exception for debugging
+                            }
+                        }
+                    });
+        }
     }
 }
-

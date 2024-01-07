@@ -3,18 +3,29 @@ package com.example.hutech.model;
 import com.google.firebase.Timestamp;
 import com.google.gson.annotations.SerializedName;
 
-public class EventListComing {
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
+public class Events {
+    @SerializedName("id")
     private String id;
+    @SerializedName("name")
     private String name;
+    @SerializedName("description")
     private String description;
+    @SerializedName("location")
     private String location;
+    @SerializedName("poster")
     private String poster;
+    @SerializedName("faculty")
     private String faculty;
+    @SerializedName("beginTime")
     private Timestamp beginTime;
+    @SerializedName("quantity")
     private Long quantity;
 
-    // Constructor
-    public EventListComing(String id, String name, String description, String location, String poster, String faculty, Timestamp beginTime, Long quantity) {
+    public Events(String id, String name, String description, String location, String poster, String faculty, Timestamp beginTime, Long quantity) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -23,6 +34,9 @@ public class EventListComing {
         this.faculty = faculty;
         this.beginTime = beginTime;
         this.quantity = quantity;
+    }
+
+    public Events() {
     }
 
     public String getId() {
@@ -87,5 +101,14 @@ public class EventListComing {
 
     public void setQuantity(Long quantity) {
         this.quantity = quantity;
+    }
+
+    public String getFormattedTime() {
+        if (beginTime != null) {
+            Date date = beginTime.toDate();
+            SimpleDateFormat outputFormat = new SimpleDateFormat("dd-MM-yyyy h:mm a", Locale.US);
+            return outputFormat.format(date);
+        }
+        return null;
     }
 }

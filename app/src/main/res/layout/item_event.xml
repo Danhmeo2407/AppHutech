@@ -8,7 +8,7 @@
     <RelativeLayout
         android:id="@+id/layoutItem"
         android:layout_width="350dp"
-        android:layout_height="150dp"
+        android:layout_height="200sp"
         android:layout_marginTop="10dp"
         android:layout_marginHorizontal="30dp"
         android:background="@drawable/custom_background">
@@ -18,13 +18,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
+            android:textStyle="bold"
+            android:maxLines="2"
             android:text="Test"
             android:textSize="20sp"/>
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:layout_marginTop="5dp"
             android:layout_marginStart="10dp"
             android:layout_below="@id/nameTextView"
@@ -36,7 +38,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/nameTextView"
             android:layout_toRightOf="@+id/imageView"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10px"
             android:text="19/04/2025"
             android:textSize="18sp"/>
 
@@ -46,7 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/timeTextView"
             android:layout_toRightOf="@+id/imageView"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="5dp"
             android:text="E1.01.01"
             android:textSize="18sp"/>
@@ -57,21 +60,32 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/locationTextView"
             android:layout_toRightOf="@+id/imageView"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="5dp"
             android:text="Khoa CNTT"
             android:textSize="18sp"/>
 
+<!--        <Button-->
+<!--            android:id="@+id/btnXemChiTiet"-->
+<!--            android:layout_width="100dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@id/imageView"-->
+<!--            android:layout_marginLeft="15sp"-->
+<!--            android:layout_toRightOf="@id/imageView"-->
+<!--            android:background="@drawable/custom_btn"-->
+<!--            android:text="Chi tiết"-->
+<!--            android:backgroundTint="@color/blue"-->
+<!--            app:backgroundTint="@null"/>-->
         <Button
-            android:id="@+id/btnXemChiTiet"
-            android:layout_width="100dp"
+            android:id="@+id/btnDangKy"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/nameTextView"
-            android:layout_toRightOf="@+id/txtKhoa"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10sp"
+            android:layout_marginLeft="15sp"
+            android:layout_toRightOf="@id/imageView"
             android:background="@drawable/custom_btn"
-            android:text="@string/xem"
+            android:text="@string/ng_k"
             android:backgroundTint="@color/green"
             app:backgroundTint="@null"/>
 

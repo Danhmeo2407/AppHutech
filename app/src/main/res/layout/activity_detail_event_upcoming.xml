@@ -62,13 +62,19 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/detailLocationTextView"
             android:layout_marginTop="8dp"/>
+        <TextView
+            android:id="@+id/detailDescriptionTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/detailTimeTextView"
+            android:layout_marginTop="8dp"/>
 
         <Button
             android:id="@+id/btnDangKy"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="40dp"
-            android:layout_below="@id/detailTimeTextView"
+            android:layout_below="@id/detailDescriptionTextView"
             android:layout_marginTop="20dp"
             android:text="Đăng Ký"
             android:background="@drawable/custom_btn"

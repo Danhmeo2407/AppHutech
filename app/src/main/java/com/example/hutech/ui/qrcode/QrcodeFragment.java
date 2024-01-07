@@ -149,7 +149,7 @@ public class QrcodeFragment extends Fragment {
 
     private void saveToEventJoined(String userUid, String userName, String mssv) {
         // Create an instance of RegisteredEvent with the provided data
-        RegisteredEvent registeredEvent = new RegisteredEvent(null, null, null, null, null, null, null, null, null, userUid);
+        RegisteredEvent registeredEvent = new RegisteredEvent();
 
         // Save the data to the "eventjoined" collection in Firestore
         FirebaseFirestore.getInstance().collection("eventjoined").document(userUid)

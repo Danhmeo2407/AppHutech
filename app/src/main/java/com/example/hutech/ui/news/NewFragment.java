@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 import com.example.hutech.Adapter.NewsAdapter;
 import com.example.hutech.R;
 import com.example.hutech.databinding.FragmentNewsBinding;
-import com.example.hutech.model.Newpaper;
+import com.example.hutech.model.News;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -27,7 +27,7 @@ public class NewFragment extends Fragment {
     private FragmentNewsBinding binding;
     private RecyclerView recyclerView;
     private NewsAdapter newsAdapter;
-    private List<Newpaper> newsList;
+    private List<News> newsList;
     private FirebaseFirestore firestore;
     private CollectionReference newsCollection;
 
@@ -57,7 +57,7 @@ public class NewFragment extends Fragment {
                 newsList.clear(); // Clear existing data before adding new data
 
                 for (DocumentSnapshot document : task.getResult()) {
-                    Newpaper news = document.toObject(Newpaper.class);
+                    News news = document.toObject(News.class);
                     newsList.add(news);
                 }
 

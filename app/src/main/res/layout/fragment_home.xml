@@ -62,7 +62,7 @@
         android:backgroundTint="@color/sea_blue"
         android:drawableLeft="@drawable/ic_checklistevent"
         android:gravity="center_horizontal|center_vertical"
-        android:text="Sự kiện đã tham gia"
+        android:text="Sự kiện đã đăng ký"
         android:textColor="@color/white"
         android:textSize="18sp"
         app:backgroundTint="@null" />

@@ -11,11 +11,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.hutech.Adapter.ListUpComingAdapter;
 import com.example.hutech.R;
 import com.example.hutech.model.EventListComing;
+import com.example.hutech.model.Events;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class ListUpcomingActivity extends AppCompatActivity {
@@ -23,7 +25,7 @@ public class ListUpcomingActivity extends AppCompatActivity {
     private Button btnBack, btnDangKy;
     private RecyclerView recyclerView;
     private ListUpComingAdapter listUpComingAdapter;
-    private List<EventListComing> eventListComingList;
+    private List<Events> events;
 
     // Firestore instance
     private FirebaseFirestore firestore;
@@ -40,18 +42,18 @@ public class ListUpcomingActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerViewEventListComing);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        eventListComingList = new ArrayList<>();
+        events = new ArrayList<>();
 
         // Initialize Firestore
         firestore = FirebaseFirestore.getInstance();
 
         // Specify the collection reference for EventListComing
-        eventListComingCollection = firestore.collection("eventsListComing");
+        eventListComingCollection = firestore.collection("events");
 
         // Fetch events from Firestore
         fetchEventsListFromFirestore();
 
-        listUpComingAdapter = new ListUpComingAdapter(this, eventListComingList);
+        listUpComingAdapter = new ListUpComingAdapter(this, events);
         recyclerView.setAdapter(listUpComingAdapter);
 
         Button btnBack = findViewById(R.id.btnBack);
@@ -68,11 +70,15 @@ public class ListUpcomingActivity extends AppCompatActivity {
     private void fetchEventsListFromFirestore() {
         eventListComingCollection.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
-                eventListComingList.clear(); // Clear existing data before adding new data
+                events.clear(); // Clear existing data before adding new data
 
                 for (DocumentSnapshot document : task.getResult()) {
-                    EventListComing event = document.toObject(EventListComing.class);
-                    eventListComingList.add(event);
+                    Events event = document.toObject(Events.class);
+
+                    // Check if the event's start time is after the current date
+                    if (event != null && event.getBeginTime() != null && event.getBeginTime().toDate().after(new Date())) {
+                        events.add(event);
+                    }
                 }
 
                 listUpComingAdapter.notifyDataSetChanged();
@@ -85,4 +91,5 @@ public class ListUpcomingActivity extends AppCompatActivity {
             }
         });
     }
+
 }
