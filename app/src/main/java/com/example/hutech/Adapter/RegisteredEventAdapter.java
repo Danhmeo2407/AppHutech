@@ -79,7 +79,7 @@ public class RegisteredEventAdapter extends RecyclerView.Adapter<RegisteredEvent
             public void onClick(View v) {
                 // Display the QR code dialog for check-in
                 checkUserRegistration(event.getId(), holder);
-                showQrCodeDialog("CheckIn:" + event.getId());
+                showQrCodeDialog(event.getId());
             }
         });
     }

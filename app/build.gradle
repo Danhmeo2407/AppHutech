@@ -66,5 +66,4 @@ dependencies {
 
     implementation 'com.google.firebase:firebase-firestore:23.0.0'  // Use the latest version available
 
-
 }
