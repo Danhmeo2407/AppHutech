@@ -21,7 +21,6 @@
         android:id="@+id/layoutNews"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20sp"
         android:layout_below="@+id/txtListComfim">
 
         <androidx.recyclerview.widget.RecyclerView

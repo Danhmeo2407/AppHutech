@@ -23,7 +23,6 @@ public class HistoryReportActivity extends AppCompatActivity {
 
     private Button btnBack;
     private TextView txtReportList;
-
     private FirebaseFirestore firestore;
 
     @Override
@@ -69,9 +68,13 @@ public class HistoryReportActivity extends AppCompatActivity {
                                 ReportData reportData = documentSnapshot.toObject(ReportData.class);
 
                                 if (reportData != null) {
-                                    reportList.append("MSSV: ").append(reportData.getMssv()).append("\n");
-                                    reportList.append("Họ tên: ").append(reportData.getFullName()).append("\n");
-                                    reportList.append("Nội dung báo cáo: ").append(reportData.getReportContent()).append("\n\n");
+                                    reportList.append("Nội dung khiếu nại: ").append(reportData.getReportContent()).append("\n\n");
+                                    if(reportData.getFeedback() != null){
+                                    reportList.append("Trang thái: ").append(reportData.getFeedback()).append("\n\n");
+                                    }else {
+                                        reportList.append("Trạng thái: Chưa nhận được câu trả lời!\n\n\n\n\n");
+                                    }
+
                                 }
                             }
 

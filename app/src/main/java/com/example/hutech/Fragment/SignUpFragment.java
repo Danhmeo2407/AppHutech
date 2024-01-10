@@ -177,10 +177,10 @@ public class SignUpFragment extends Fragment {
                                 signUpProgress.setVisibility(View.INVISIBLE);
                                 if(task.isSuccessful()){
                                     Map<String,Object> user = new HashMap<>();
-                                    user.put("userName",userName.getText().toString());
-                                    user.put("emailId",email.getText().toString());
-                                    user.put("Sdt",sdt.getText().toString());
-                                    user.put("Mssv",mssv.getText().toString());
+                                    user.put("username",userName.getText().toString());
+                                    user.put("email",email.getText().toString());
+                                    user.put("phone",sdt.getText().toString());
+                                    user.put("studentId",mssv.getText().toString());
                                     db.collection("users")
                                             .document(task.getResult().getUser().getUid())
                                             .set(user)

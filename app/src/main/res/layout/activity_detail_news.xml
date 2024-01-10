@@ -15,49 +15,90 @@
         android:drawableLeft="@drawable/ic_back"
         app:backgroundTint="@null"/>
 
-
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/btnBack"
-        android:paddingLeft="16dp"
-        android:paddingTop="16dp"
-        android:paddingRight="16dp"
-        android:paddingBottom="16dp">
+        android:layout_below="@+id/btnBack">
 
-        <TextView
-            android:id="@+id/detailNewTitleTextView"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="8dp"/>
+            android:paddingLeft="16dp"
+            android:paddingTop="16dp"
+            android:paddingRight="16dp"
+            android:paddingBottom="16dp">
 
-        <ImageView
-            android:id="@+id/detailNewsImageView"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:scaleType="centerCrop"
-            android:layout_below="@id/detailNewTitleTextView"
-            android:layout_marginTop="8dp"/>
+            <TextView
+                android:id="@+id/detailNewTitleTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp"/>
 
-        <TextView
-            android:id="@+id/detailNewsTimeTextView"
-            android:layout_width="match_parent"
+            <ImageView
+                android:id="@+id/detailNewsImageView"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="centerCrop"
+                android:layout_below="@id/detailNewTitleTextView"
+                android:layout_marginTop="8dp"/>
+
+            <TextView
+                android:id="@+id/detailNewsTimeTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/detailNewsImageView"
+                android:layout_marginTop="8dp"/>
+
+            <TextView
+                android:id="@+id/detailNewsDescriptionTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/detailNewsTimeTextView"
+                android:layout_marginTop="16dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bình luận"
+                android:layout_marginTop="20sp"
+                android:id="@+id/titleComment"
+                android:layout_below="@+id/detailNewsDescriptionTextView"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/commentsRecyclerView"
+                android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/detailNewsImageView"
-            android:layout_marginTop="8dp"/>
+                android:layout_below="@id/titleComment"
+                android:layout_marginTop="16dp" />
 
-        <TextView
-            android:id="@+id/detailNewsDescriptionTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/detailNewsTimeTextView"
-            android:layout_marginTop="16dp"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/commentsRecyclerView"
+                android:layout_marginVertical="20sp">
+                <EditText
+                    android:layout_width="290sp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginHorizontal="10sp"
+                    android:layout_marginVertical="10dp"
+                    android:hint="Nhập nội dung bình luận"
+                    android:id="@+id/contentComment"
+                    android:maxLines="10"/>
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:foregroundGravity="center"
+                    android:id="@+id/sendButton"
+                    android:layout_toRightOf="@+id/contentComment"
+                    android:backgroundTint="@color/white"
+                    android:src="@drawable/baseline_send_24"/>
+            </RelativeLayout>
 
-
-
-
-    </RelativeLayout>
+        </RelativeLayout>
+    </ScrollView>
 
 </RelativeLayout>

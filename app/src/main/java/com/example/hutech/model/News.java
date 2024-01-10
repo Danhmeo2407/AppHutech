@@ -1,14 +1,18 @@
 package com.example.hutech.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.firebase.Timestamp;
 import com.google.gson.annotations.SerializedName;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
-public class News {
+public class News{
     @SerializedName("id")
     private String id;
     @SerializedName("title")
@@ -23,7 +27,6 @@ public class News {
     public News() {
         // Default constructor is required by Firestore
     }
-
 
     public News(String id, String title, String description, Timestamp time, String image) {
         this.id = id;
@@ -72,6 +75,7 @@ public class News {
     public void setImage(String image) {
         this.image = image;
     }
+
     public String getFormattedTime() {
         if (time != null) {
             Date date = time.toDate();
@@ -80,4 +84,7 @@ public class News {
         }
         return null;
     }
+
+
+
 }

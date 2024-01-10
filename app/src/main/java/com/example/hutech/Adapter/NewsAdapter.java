@@ -43,8 +43,6 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewViewHolder>
         News news1 = news.get(position);
 
         holder.newtitleTextView.setText(news1.getTitle());
-        holder.newsDescriptionTextView.setText(news1.getDescription());
-
         // Format the Timestamp to a String before setting it in the TextView
         String formattedTime = news1.getFormattedTime(); // Assuming you have a method to format Timestamp in the News class
         holder.newtimeTextView.setText(formattedTime);
@@ -75,18 +73,15 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewViewHolder>
 
     public class NewViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView newtitleTextView, newtimeTextView,newsDescriptionTextView;
+        private TextView newtitleTextView, newtimeTextView;
         private ImageView newimageView;
         private RelativeLayout relativeLayout;
 
         public NewViewHolder(@NonNull View itemView) {
             super(itemView);
-
             newtitleTextView = itemView.findViewById(R.id.newsTitleTextView);
-            newsDescriptionTextView = itemView.findViewById(R.id.newsDescriptionTextView);
             newtimeTextView = itemView.findViewById(R.id.newsTimeTextView);
             newimageView = itemView.findViewById(R.id.newsImageView);
-
             relativeLayout = itemView.findViewById(R.id.layoutNews);
         }
     }

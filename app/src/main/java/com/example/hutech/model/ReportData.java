@@ -3,14 +3,12 @@ package com.example.hutech.model;
 import com.google.gson.annotations.SerializedName;
 
 public class ReportData {
-    @SerializedName("mssv")
-    private String mssv;
-    @SerializedName("fullName")
-    private String fullName;
     @SerializedName("reportContent")
     private String reportContent;
     @SerializedName("userUid")
-    private String userUid;  // New field for user UID
+    private String userUid;
+    @SerializedName("feedback")
+    private String feedback;
 
     // Constructors, getters, and setters...
 
@@ -18,27 +16,23 @@ public class ReportData {
         // Empty constructor needed for Firestore
     }
 
-    public ReportData(String mssv, String fullName, String reportContent, String userUid) {
-        this.mssv = mssv;
-        this.fullName = fullName;
+    public ReportData(String reportContent, String userUid, String feedback) {
+        this.reportContent = reportContent;
+        this.userUid = userUid;
+        this.feedback = feedback;
+    }
+
+    public ReportData(String reportContent, String userUid) {
         this.reportContent = reportContent;
         this.userUid = userUid;
     }
 
-    public String getMssv() {
-        return mssv;
+    public String getFeedback() {
+        return feedback;
     }
 
-    public void setMssv(String mssv) {
-        this.mssv = mssv;
-    }
-
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setFeedback(String feedback) {
+        this.feedback = feedback;
     }
 
     public String getReportContent() {

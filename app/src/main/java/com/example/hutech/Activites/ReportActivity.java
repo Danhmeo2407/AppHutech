@@ -19,8 +19,6 @@ public class ReportActivity extends AppCompatActivity {
 
     private Button btnBack;
     private Button btnSend;
-    private EditText edtMSSV;
-    private EditText edtHoTen;
     private EditText edtReportContent;
 
     private FirebaseFirestore firestore;
@@ -38,8 +36,6 @@ public class ReportActivity extends AppCompatActivity {
 
         btnBack = findViewById(R.id.btnBack);
         btnSend = findViewById(R.id.btnSend);
-        edtMSSV = findViewById(R.id.edtMSSV);
-        edtHoTen = findViewById(R.id.edtHoTen);
         edtReportContent = findViewById(R.id.edtReportContent);
 
         btnBack.setOnClickListener(new View.OnClickListener() {
@@ -52,16 +48,14 @@ public class ReportActivity extends AppCompatActivity {
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String mssv = edtMSSV.getText().toString().trim();
-                String fullName = edtHoTen.getText().toString().trim();
                 String reportContent = edtReportContent.getText().toString().trim();
 
-                if (!mssv.isEmpty() && !fullName.isEmpty() && !reportContent.isEmpty()) {
+                if (!reportContent.isEmpty()) {
                     // Get the current user's UID
                     String userUid = getCurrentUserUid();
 
                     if (userUid != null) {
-                        ReportData reportData = new ReportData(mssv, fullName, reportContent, userUid);
+                        ReportData reportData = new ReportData(reportContent, userUid);
 
                         firestore.collection("reports")
                                 .add(reportData)

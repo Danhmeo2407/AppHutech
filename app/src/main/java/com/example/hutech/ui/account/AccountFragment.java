@@ -112,11 +112,11 @@ public class AccountFragment extends Fragment {
                     .get()
                     .addOnSuccessListener(documentSnapshot -> {
                         if (documentSnapshot.exists()) {
-                            String userName = documentSnapshot.getString("userName");
-                            String emailId = documentSnapshot.getString("emailId");
-                            String Mssv = documentSnapshot.getString("Mssv");
-                            String Sdt = documentSnapshot.getString("Sdt");
-                            String avatarUrl = documentSnapshot.getString("avatarUrl");
+                            String userName = documentSnapshot.getString("displayName");
+                            String emailId = documentSnapshot.getString("email");
+                            String Mssv = documentSnapshot.getString("studentId");
+                            String Sdt = documentSnapshot.getString("phone");
+                            String avatarUrl = documentSnapshot.getString("image");
 
                             // ... (retrieve other fields)
 
@@ -149,7 +149,7 @@ public class AccountFragment extends Fragment {
         txtGmail.setText(emailId);
         txtMSSV.setText(Mssv);
         txtSDT.setText(Sdt);
-        Glide.with(this).load(avatarUrl).into(avatarImageView);
+        Glide.with(this).load(avatarUrl).circleCrop().into(avatarImageView);
     }
 
 
@@ -191,7 +191,7 @@ public class AccountFragment extends Fragment {
 
             db.collection("users")
                     .document(userId)
-                    .update("avatarUrl", imageUrl)
+                    .update("image", imageUrl)
                     .addOnSuccessListener(aVoid -> {
                         updateUIWithAvatar(imageUrl);
                     })
@@ -236,7 +236,7 @@ public class AccountFragment extends Fragment {
 
             db.collection("users")
                     .document(userId)
-                    .update("Sdt", newPhoneNumber)
+                    .update("phone", newPhoneNumber)
                     .addOnSuccessListener(aVoid -> {
                     })
                     .addOnFailureListener(e -> {

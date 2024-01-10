@@ -22,11 +22,11 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/btnBack"
         android:layout_marginTop="20dp"
-        android:layout_marginStart="100dp"
+        android:layout_centerHorizontal="true"
         android:textSize="25sp"
         android:textStyle="bold"
         android:textColor="@color/black"
-        android:text="Lịch sử khiếu nhại" />
+        android:text="Lịch sử khiếu nại" />
 
     <ScrollView
         android:layout_width="match_parent"

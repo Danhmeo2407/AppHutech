@@ -84,8 +84,11 @@ public class DetailEventUpcomingActivity extends AppCompatActivity {
                     .addOnCompleteListener(task -> {
                         if (task.isSuccessful() && task.getResult() != null && !task.getResult().isEmpty()) {
                             // User is already registered for this event
-
                             showToast("You have already registered for this event");
+
+                            // Check the status of the registration
+                            int status = task.getResult().getDocuments().get(0).getLong("status").intValue();
+                            updateRegistrationStatus(status == 1);
                         } else {
                             // User is not registered, proceed with registration
                             Map<String, Object> registrationDetails = new HashMap<>();
@@ -114,6 +117,7 @@ public class DetailEventUpcomingActivity extends AppCompatActivity {
             showToast("Please log in before registering for the event");
         }
     }
+
 
     private void updateRegistrationStatus(boolean isRegistered) {
         Button btnDangKy = findViewById(R.id.btnDangKy);
